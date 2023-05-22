@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Libros")
+@Table(name = "\"Libros\"")
 public class Libro {
     private String titulo;
     private String autor;
@@ -22,11 +22,10 @@ public class Libro {
 
     }
 
-    public Libro(String titulo, String autor, String editorial, Long ISBN, String genero, LocalDate fechaDeLanzamiento, double precio) {
+    public Libro(String titulo, String autor, String editorial, String genero, LocalDate fechaDeLanzamiento, double precio) {
         this.titulo = titulo;
         this.autor = autor;
         this.editorial = editorial;
-        this.ISBN = ISBN;
         this.genero = genero;
         this.fechaDeLanzamiento = fechaDeLanzamiento;
         this.precio = precio;

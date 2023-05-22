@@ -14,9 +14,9 @@ public class ObRestDatajpaApplication {
 
 		LibroRepository repository = context.getBean(LibroRepository.class);
 
-		Libro libro1 = new Libro("Titulo", "autor", "editorial", null, "genero", LocalDate.of(2000,06,06), 100);
-		Libro libro2 = new Libro("Alicia", "autor", "editorial", null, "genero", LocalDate.of(2000,06,06), 100);
-		Libro libro3 = new Libro("Harry Potter", "autor", "editorial", null, "genero", LocalDate.of(2000,06,06), 100);
+		Libro libro1 = new Libro("Titulo", "autor", "editorial", "genero", LocalDate.of(2000,06,06), 100);
+		Libro libro2 = new Libro("Alicia", "autor", "editorial", "genero", LocalDate.of(2000,06,06), 100);
+		Libro libro3 = new Libro("Harry Potter", "autor", "editorial", "genero", LocalDate.of(2000,06,06), 100);
 
 		//Guardar un libro
 		repository.save(libro1);
