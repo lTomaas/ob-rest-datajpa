@@ -2,7 +2,9 @@ package com.example.obrestdatajpa;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
 import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "\"Libros\"")
@@ -22,7 +24,8 @@ public class Libro {
 
     }
 
-    public Libro(String titulo, String autor, String editorial, String genero, LocalDate fechaDeLanzamiento, double precio) {
+    public Libro(Long ISBN, String titulo, String autor, String editorial, String genero, LocalDate fechaDeLanzamiento, double precio) {
+        this.ISBN = ISBN;
         this.titulo = titulo;
         this.autor = autor;
         this.editorial = editorial;

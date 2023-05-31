@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LISTA DE LIBROS</title>
+</head>
+<body>
+    <h1>LISTA DE LIBROS</h1>
+
+    <br>
+    <button onclick="location.href = '/api/nuevoLibro'">AGREGAR UN LIBRO</button>
+
+    <br>
+    <hr>
+        <table border = 1>
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Editorial</th>
+                    <th>ISBN</th>
+                    <th>Genero</th>
+                    <th>Fecha de lanzamiento</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr th:each = "libro: ${libros}">
+                    <td th:text = "${libro.titulo}"></td>
+                    <td th:text = "${libro.autor}"></td>
+                    <td th:text = "${libro.editorial}"></td>
+                    <td th:text = "${libro.ISBN}"></td>
+                    <td th:text = "${libro.genero}"></td>
+                    <td th:text = "${libro.fechaDeLanzamiento}"></td>
+                    <td th:text = "${libro.precio}"></td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <br>
+</body>
+</html>

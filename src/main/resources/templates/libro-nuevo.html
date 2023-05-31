@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+
+    <title>Nuevo libro</title>
+</head>
+<body>
+    <h2> INSERTAR UN NUEVO LIBRO</h2>
+    <form method="POST" action = "#" th:action = "@{/api/crearLibro}" th:objet = "${libroDto}">
+        <p>Titulo <input type="text" name="titulo" required/></p>
+        <p>Autor <input type="text" name="autor" required/></p>
+        <p>Editorial <input type="text" name="editorial" required/></p>
+        <p>Genero <input type="text" name="genero" required/></p>
+        <p>Precio <input type="number" name="precio" min = 0 required/></p>
+        <p>Fecha de lanzamiento <input type="date" name="fecha_de_lanzamiento" required/></p>
+        <p>Agregar una imagen <input type="file" accept="image/*" name="img"/></p>
+        <button type = "submit"> Agregar</button>
+    </form>
+    <br>
+    <button onclick="location.href = '/api/libros'"> Salir </button>
+
+</body>
+</html>

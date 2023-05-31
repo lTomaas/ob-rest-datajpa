@@ -1,14 +1,18 @@
 package com.example.obrestdatajpa;
 
+import com.example.obrestdatajpa.dto.LibroDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class LibroController {
     private LibroRepository repository;
 
@@ -23,9 +27,37 @@ public class LibroController {
 
     //Buscar todos los libros
     @GetMapping("/api/libros")
-    public List<Libro> buscarLibros(){
+    public String buscarLibros(Model model){
         //Recuperar y devolver los libros de base de datos
-        return repository.findAll();
+        model.addAttribute("libros", repository.findAll());
+        return "libros";
+    }
+
+    //Form para crear libro
+    @GetMapping("api/nuevoLibro")
+    public String nuevoLibro(){
+        return "libro-nuevo";
+    }
+
+    //Creacion de nuevo libro
+    @PostMapping("api/crearLibro")
+    public String registrar(@ModelAttribute LibroDto libroDto, Model model){
+        model.addAttribute("libro", libroDto);
+
+
+        Libro nuevoLibro = new Libro();
+        nuevoLibro.setTitulo(libroDto.getTitulo());
+        nuevoLibro.setAutor(libroDto.getAutor());
+        nuevoLibro.setEditorial(libroDto.getEditorial());
+        nuevoLibro.setGenero(libroDto.getGenero());
+        nuevoLibro.setFechaDeLanzamiento(libroDto.getFechaDeLanzamiento());
+        nuevoLibro.setPrecio(libroDto.getPrecio());
+
+        System.out.println(libroDto.getFechaDeLanzamiento());
+
+        repository.save(nuevoLibro);
+
+        return "redirect:/api/libros";
     }
 
 
@@ -84,4 +116,5 @@ public class LibroController {
         repository.deleteAll();
         return ResponseEntity.noContent().build();
     }
+
 }
